@@ -19,24 +19,23 @@ cd "$BUILD_DIR"
 checkStatus $? "change directory to ${BUILD_DIR}"
 
 # check whether it has been completed
-if [ -f "cmake-$VERSION-ok" ]; then
-  echo "cmake has been completed"
+if [ -f "libtool-$VERSION-ok" ]; then
+  echo "libtool has been completed"
   exit 0
 fi
 
 # copy source file
-cp -r $SOURCE_DIR/cmake-$VERSION.tar.gz ./
-checkStatus $? "cp -r $SOURCE_DIR/cmake-$VERSION.tar.gz ./"
+cp -r $SOURCE_DIR/libtool-$VERSION.tar.gz ./
+checkStatus $? "cp -r $SOURCE_DIR/libtool-$VERSION.tar.gz ./"
 
 # unpack
-tar -zxf "cmake-$VERSION.tar.gz"
-checkStatus $? "unpack cmake-$VERSION.tar.gz"
-cd cmake-$VERSION
-checkStatus $? "cd cmake-$VERSION"
+tar -zxf "libtool-$VERSION.tar.gz"
+checkStatus $? "unpack libtool-$VERSION.tar.gz"
+cd libtool-$VERSION
+checkStatus $? "cd libtool-$VERSION"
 
 
 # prepare build
-export OPENSSL_ROOT_DIR="$INSTALL_DIR"
 ./configure --prefix="$INSTALL_DIR"
 checkStatus $? "configure --prefix=$INSTALL_DIR"
 
@@ -52,5 +51,5 @@ checkStatus $? "make install"
 cd "$BUILD_DIR"
 checkStatus $? "change directory to ${BUILD_DIR}"
 
-touch "cmake-$VERSION-ok"
-checkStatus $? "touch cmake-$VERSION-ok"
+touch "libtool-$VERSION-ok"
+checkStatus $? "touch libtool-$VERSION-ok"
