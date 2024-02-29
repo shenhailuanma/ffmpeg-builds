@@ -13,6 +13,9 @@ http://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.gz
 # pkg-config
 https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz 
 
+# libtool
+https://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.gz
+
 # zlib 
 https://www.zlib.net/fossils/zlib-1.3.1.tar.gz
 
@@ -30,6 +33,10 @@ https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.12.5/libxml2-v2.12.5.tar.gz
 
 # fribidi 
 https://github.com/fribidi/fribidi/releases/download/v1.0.13/fribidi-1.0.13.tar.xz
+
+
+# x264
+https://code.videolan.org/videolan/x264/-/archive/master/x264-master.tar.gz
 
 # x265
 http://ftp.videolan.org/pub/videolan/x265/x265_3.2.tar.gz

@@ -42,7 +42,7 @@ FF_FLAGS="-L${INSTALL_DIR}/lib -I${INSTALL_DIR}/include"
 export LDFLAGS="$FF_FLAGS"
 export CFLAGS="$FF_FLAGS"
 # --pkg-config-flags="--static" is required to respect the Libs.private flags of the *.pc files
-./configure --prefix="$OUT_DIR" --pkg-config-flags="--static" --extra-version="$EXTRA_VERSION" \
+./configure --prefix="$INSTALL_DIR" --pkg-config-flags="--static" --extra-version="$EXTRA_VERSION" \
     --enable-gray --enable-libxml2 --enable-gpl $FFMPEG_LIB_FLAGS
 checkStatus $? "configuration"
 

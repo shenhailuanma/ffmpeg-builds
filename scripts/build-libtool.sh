@@ -47,6 +47,8 @@ checkStatus $? "make"
 make install
 checkStatus $? "make install"
 
+cp -f $INSTALL_DIR/bin/libtoolize $INSTALL_DIR/bin/glibtoolize
+
 #
 cd "$BUILD_DIR"
 checkStatus $? "change directory to ${BUILD_DIR}"

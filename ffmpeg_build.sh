@@ -110,6 +110,14 @@ echoDurationInSections $START_TIME
 ### codecs ###
 
 # build x264
+START_TIME=$(currentTimeInSeconds)
+echoSection "compile x264"
+$SCRIPT_DIR/build-x264.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "20240229" > "$LOG_DIR/build-x264.log" 2>&1
+checkStatus $? "build x264"
+echoDurationInSections $START_TIME
+FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-libx264"
+REQUIRES_GPL="YES"
+
 
 # build x265
 START_TIME=$(currentTimeInSeconds)
@@ -126,8 +134,8 @@ echoSection "To compile libheif"
 $SCRIPT_DIR/build-libheif.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "1.17.6" > "$LOG_DIR/build-libheif.log" 2>&1
 checkStatus $? "build libheif"
 echoDurationInSections $START_TIME
-# FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-libx265"
-REQUIRES_GPL="YES"
+# FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-libheif"
+# REQUIRES_GPL="YES"
 
 
 # build ffmpeg
