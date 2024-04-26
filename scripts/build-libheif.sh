@@ -40,7 +40,7 @@ cd build/
 checkStatus $? "cd build/"
 
 # prepare build
-cmake -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DENABLE_SHARED=NO -DENABLE_CLI=OFF --preset=release ..
+cmake -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_DIR -DENABLE_SHARED=YES --preset=release ..
 checkStatus $? "cmake"
 
 # # configure

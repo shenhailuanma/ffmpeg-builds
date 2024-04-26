@@ -44,3 +44,6 @@ http://ftp.videolan.org/pub/videolan/x265/x265_3.2.tar.gz
 # libheic
 https://github.com/strukturag/libheif/releases
 ```
+
+
+export LD_LIBRARY_PATH=/Users/xuzhang@apac.freewheel.com/gitbase2/ffmpeg-builds/build/install/lib

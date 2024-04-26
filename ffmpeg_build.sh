@@ -36,7 +36,7 @@ checkStatus $? "To create BUILD_DIR:${BUILD_DIR}"
 echo "system info: $(uname -a)"
 COMPILATION_START_TIME=$(currentTimeInSeconds)
 PATH="$INSTALL_DIR/bin:$PATH"
-echo "PATH:$PATH"
+
 
 # prepare build
 FFMPEG_LIB_FLAGS=""
@@ -105,9 +105,19 @@ checkStatus $? "build fribidi"
 echoDurationInSections $START_TIME
 
 
+# libde265 (libheif required)
+# START_TIME=$(currentTimeInSeconds)
+# echoSection "compile libde265"
+# $SCRIPT_DIR/build-libde265.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "1.0.15" > "$LOG_DIR/build-libde265.log" 2>&1
+# checkStatus $? "build libde265"
+# echoDurationInSections $START_TIME
+
 
 
 ### codecs ###
+FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-gpl"
+
+
 
 # build x264
 START_TIME=$(currentTimeInSeconds)
@@ -118,24 +128,25 @@ echoDurationInSections $START_TIME
 FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-libx264"
 REQUIRES_GPL="YES"
 
+FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-libheif"
+
 
 # build x265
-START_TIME=$(currentTimeInSeconds)
-echoSection "To compile x265"
-$SCRIPT_DIR/build-x265.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "3.2" "NO" > "$LOG_DIR/build-x265.log" 2>&1
-checkStatus $? "build x265"
-echoDurationInSections $START_TIME
-FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-libx265"
-REQUIRES_GPL="YES"
-
-# build libheif
-START_TIME=$(currentTimeInSeconds)
-echoSection "To compile libheif"
-$SCRIPT_DIR/build-libheif.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "1.17.6" > "$LOG_DIR/build-libheif.log" 2>&1
-checkStatus $? "build libheif"
-echoDurationInSections $START_TIME
-# FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-libheif"
+# START_TIME=$(currentTimeInSeconds)
+# echoSection "To compile x265"
+# $SCRIPT_DIR/build-x265.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "3.2" "NO" > "$LOG_DIR/build-x265.log" 2>&1
+# checkStatus $? "build x265"
+# echoDurationInSections $START_TIME
+# FFMPEG_LIB_FLAGS="$FFMPEG_LIB_FLAGS --enable-libx265"
 # REQUIRES_GPL="YES"
+
+# build libheif (used it's CLI for HEIC pics convert)
+# START_TIME=$(currentTimeInSeconds)
+# echoSection "To compile libheif"
+# $SCRIPT_DIR/build-libheif.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "1.17.6" > "$LOG_DIR/build-libheif.log" 2>&1
+# checkStatus $? "build libheif"
+# echoDurationInSections $START_TIME
+
 
 
 # build ffmpeg
@@ -150,7 +161,7 @@ echoDurationInSections $START_TIME
 
 START_TIME=$(currentTimeInSeconds)
 echoSection "compile ffmpeg"
-$SCRIPT_DIR/build-ffmpeg.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "6.1.1" "$FFMPEG_LIB_FLAGS" > "$LOG_DIR/build-ffmpeg.log" 2>&1
+$SCRIPT_DIR/build-ffmpeg.sh "$SCRIPT_DIR" "$SOURCE_DIR" "$BUILD_DIR" "$INSTALL_DIR" "7.0" "$FFMPEG_LIB_FLAGS" > "$LOG_DIR/build-ffmpeg.log" 2>&1
 checkStatus $? "build ffmpeg"
 echoDurationInSections $START_TIME
 

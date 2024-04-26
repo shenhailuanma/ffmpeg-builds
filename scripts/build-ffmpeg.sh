@@ -53,3 +53,10 @@ checkStatus $? "make"
 # install ffmpeg
 make install
 checkStatus $? "make install"
+
+#
+cd "$BUILD_DIR"
+checkStatus $? "change directory to ${BUILD_DIR}"
+
+touch "ffmpeg-$VERSION-ok"
+checkStatus $? "touch ffmpeg-$VERSION-ok"
