@@ -46,4 +46,4 @@ https://github.com/strukturag/libheif/releases
 ```
 
 
-export LD_LIBRARY_PATH=/Users/xuzhang@apac.freewheel.com/gitbase2/ffmpeg-builds/build/install/lib
+export LD_LIBRARY_PATH=~/ffmpeg-builds/build/install/lib
